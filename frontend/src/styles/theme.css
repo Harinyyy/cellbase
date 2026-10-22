@@ -1,0 +1,157 @@
+/*
+  Design language for CellBase, grounded in the actual materials of a cell
+  culture lab rather than generic SaaS defaults:
+  - The primary accent (muted rose) references phenol red pH indicator
+    in fresh growth media, balanced with calm sage and teal surfaces.
+  - "Turbid amber" (contamination) references the visible cloudiness/color
+    shift of contaminated media, distinct from a generic red error color.
+  - "Culture teal" references healthy, actively growing cultures.
+  - Warm ivory surfaces and soft laboratory photography keep the interface
+    bright and calm while preserving clear instrument-style information.
+*/
+
+:root {
+  /* Surfaces */
+  --bg: #f5f4ef;
+  --surface: rgba(255, 255, 255, 0.94);
+  --surface-sunken: #f0f2ed;
+  --line: #e0e4dc;
+  --line-strong: #cbd4cb;
+
+  /* Ink */
+  --ink: #142b2c;
+  --ink-soft: #596b6b;
+  --ink-faint: #879392;
+
+  /* Sidebar (instrument panel) */
+  --panel-bg: #f8f7f2;
+  --panel-ink: #1e3534;
+  --panel-ink-soft: #71817d;
+  --panel-line: #e1e5de;
+
+  /* Accents */
+  --media: #c97872; /* muted phenol-red pink */
+  --media-deep: #9f5754;
+  --media-soft: #f5e5e1;
+
+  --culture: #39836f; /* healthy / active */
+  --culture-deep: #245e53;
+  --culture-soft: #e3eee7;
+
+  --turbid: #b07b35; /* contamination / warning */
+  --turbid-deep: #835a28;
+  --turbid-soft: #f5ecdc;
+
+  --focus: #527f9b; /* informational / links / focus */
+  --focus-soft: #e2ebef;
+
+  --danger: #b33a3a;
+  --danger-deep: #8f2d2d;
+  --danger-soft: #f5dcdc;
+
+  --neutral-soft: #e7ece9;
+
+  /* Typography */
+  --font-ui: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Shape */
+  --radius-sm: 7px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Elevation — used sparingly, only for true overlays */
+  --shadow-overlay: 0 16px 44px rgba(20, 43, 44, 0.16);
+
+  --sidebar-width: 252px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+h1 {
+  font-size: 1.7rem;
+}
+h2 {
+  font-size: 1.3rem;
+}
+h3 {
+  font-size: 1.05rem;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--focus);
+}
+
+button {
+  font-family: inherit;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 0.92rem;
+}
+
+/* Numeric "instrument readout" style — used narrowly for live sensor
+   values (temperature, CO2, passage counts), not for general labels. */
+.readout {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+
+::selection {
+  background: var(--media-soft);
+  color: var(--media-deep);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
