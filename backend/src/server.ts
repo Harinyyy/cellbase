@@ -1,18 +1,18 @@
-import path from 'path';
+
 import dotenv from 'dotenv';
-
-dotenv.config({ path: path.resolve(__dirname, '../../.env') });
-
 import app from './app';
 import { connectDatabase } from './db/db';
 
-const PORT = process.env.BACKEND_PORT ? Number(process.env.BACKEND_PORT) : 4000;
+dotenv.config();
+
+const PORT = Number(process.env.PORT || process.env.BACKEND_PORT || 4000);
 
 async function start(): Promise<void> {
   await connectDatabase();
-  app.listen(PORT, () => {
-    console.log(`Backend server running on http://localhost:${PORT}`);
-    console.log(`Health check: http://localhost:${PORT}/health`);
+
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Backend server listening on port ${PORT}`);
+    console.log(`Health check: /health`);
   });
 }
 
